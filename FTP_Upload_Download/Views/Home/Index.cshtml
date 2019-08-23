@@ -1,0 +1,65 @@
+﻿@{
+    ViewBag.Title = "FTP Teste";
+}
+
+<section>
+    @using (Html.BeginForm("Upload", "Home", FormMethod.Get))
+    {
+        <article>
+            <h2>Server FTP</h2>
+            <label for="txtUsuario">Usuário</label>
+            <input id="txtUsuario" type="text" name="txtUsuario" value="" />
+
+            <label for="txtSenha">Senha</label>
+            <input id="txtSenha" type="password" name="txtSenha" value="" />
+
+            <label for="txtEnderecoServidorFTP">Endereço</label>
+            <input id="txtEnderecoServidorFTP" type="text" name="txtEnderecoServidorFTP" value="" />
+        </article>
+        <hr />
+        <article>
+            <h3>Upload</h3>
+            <label for="txtArquivoUpload">Enviar Aquivo (Upload)</label>
+            <input id="txtArquivoUpload" type="text" name="txtArquivoUpload" value="" />
+            <input id="btnProcurar" type="file" name="upload" value="" />
+            <br />
+            <input type="submit" id="btnEnviarArquivo" name="btnEnviarArquivo" value="Enviar" />
+        </article>
+    }
+    <hr />
+    @using (Html.BeginForm("Download", "Home", FormMethod.Get))
+    {
+        <article hidden>
+            <h2>Server FTP</h2>
+            <label for="txtUsuario">Usuário</label>
+            <input id="txtUsuarioHidden" type="text" name="txtUsuario" value="" />
+
+            <label for="txtSenha">Senha</label>
+            <input id="txtSenhaHidden" type="password" name="txtSenha" value="" />
+
+            <label for="txtEnderecoServidorFTP">Endereço</label>
+            <input id="txtEnderecoServidorFTPHidden" type="text" name="txtEnderecoServidorFTP" value="" />
+        </article>
+        <article>
+            <h3>Download</h3>
+            <label for="txtArquivoDownload">URL Arquivo</label>
+            <input id="txtArquivoDownload" type="text" name="txtArquivoDownload" value="" />
+            <br />
+            <label for="txtBaixarPara">Baixar para</label>
+            <input id="txtBaixarPara" type="text" name="txtBaixarPara" value="" />
+            <br />
+            <input type="submit" id="btnBaixarArquivo" onclick="duplicate()" name="btnBaixarArquivo" value="Baixar Arquivo" />
+        </article>
+    }
+
+
+
+</section>
+
+<script>
+    function duplicate() {
+        document.getElementById("txtUsuarioHidden").value = document.getElementById("txtUsuario").value;
+        document.getElementById("txtSenhaHidden").value = document.getElementById("txtSenha").value;
+        document.getElementById("txtEnderecoServidorFTPHidden").value = document.getElementById("txtEnderecoServidorFTP").value;
+    }
+</script>
